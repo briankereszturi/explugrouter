@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure for your application as:
 #
-#     config :explugrouter, key: :value
+#     config :ex_plug_router, key: :value
 #
 # And access this configuration in your application as:
 #
-#     Application.get_env(:explugrouter, :key)
+#     Application.get_env(:ex_plug_router, :key)
 #
 # Or configure a 3rd-party app:
 #

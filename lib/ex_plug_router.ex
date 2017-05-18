@@ -1,16 +1,16 @@
-defmodule Explugrouter do
+defmodule ExPlugRouter do
   defmacro __using__(_opts) do
     quote do
       use Plug.Router
       use Plug.ErrorHandler
 
-      import Explugrouter
+      import ExPlugRouter
       import Plug.Conn
-      import Explugrouter.Utils
+      import ExPlugRouter.Utils
 
       require Logger
 
-      @before_compile Explugrouter
+      @before_compile ExPlugRouter
 
       def handle_errors(conn, %{kind: _kind, reason: reason, stack: _stack}),
         do: handle_error(conn, reason)

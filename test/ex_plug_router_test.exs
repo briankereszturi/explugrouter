@@ -1,6 +1,6 @@
-defmodule ExplugrouterTest do
+defmodule ExPlugRouterTest do
   use ExUnit.Case
-  doctest Explugrouter
+  doctest ExPlugRouter
 
   test "the truth" do
     assert 1 + 1 == 2

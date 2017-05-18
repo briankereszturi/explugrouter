@@ -1,4 +1,4 @@
-defmodule Explugrouter.Utils do
+defmodule ExPlugRouter.Utils do
   import Plug.Conn
   
   require Logger
