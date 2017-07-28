@@ -30,7 +30,11 @@ defmodule ExPlugRouter do
   defmacro handle_result(block) do
     quote do
       case unquote(block) do
-        %Plug.Conn{}=c -> send_resp(c, 200, "")
+        %Plug.Conn{}=conn ->
+          case var!(conn).state() do
+            :sent -> nil
+            _     -> send_resp(var!(conn), 200, "")
+          end
         :ok -> send_resp(var!(conn), 200, "")
         {:ok, data} -> send_json(var!(conn), %{data: data})
         e -> handle_error(var!(conn), e)
