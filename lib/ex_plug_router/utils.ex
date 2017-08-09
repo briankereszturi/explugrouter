@@ -3,7 +3,9 @@ defmodule ExPlugRouter.Utils do
   
   require Logger
 
-  def handle_error(conn, {:error, :bad_request, errors}),
+  def handle_error(conn, {:error, :bad_request, error}),
+    do: send_json(conn, 400, %{"errors" => error})
+  def handle_error(conn, {:errors, :bad_request, errors}),
     do: send_json(conn, 400, %{"errors" => errors})
   def handle_error(conn, {:error, :bad_request}),
     do: send_resp(conn, 400, "Bad Request")
