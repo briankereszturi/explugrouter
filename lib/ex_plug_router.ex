@@ -36,6 +36,7 @@ defmodule ExPlugRouter do
             _     -> send_resp(var!(conn), 200, "")
           end
         :ok -> send_resp(var!(conn), 200, "")
+        {:ok, meta, data} -> send_json(var!(conn), %{meta: meta, data: data})
         {:ok, data} -> send_json(var!(conn), %{data: data})
         e -> handle_error(var!(conn), e)
       end
