@@ -19,6 +19,8 @@ defmodule ExPlugRouter.Utils do
     do: send_resp(conn, 404, "Not Found")
   def handle_error(conn, {:error, :internal_server_error}),
     do: send_resp(conn, 500, "Internal Server Error")
+  def handle_error(conn, %{:valid? => false}=cs),
+    do: send_changeset_errors(conn, cs)
   def handle_error(conn, e) do
     Logger.error "#{inspect e}"
     send_resp(conn, 500, "Internal Server Error")
@@ -43,6 +45,6 @@ defmodule ExPlugRouter.Utils do
     errors = changeset.errors
       |> Enum.map(fn {k, v} -> ~s("#{k}" #{render_detail(v)}) end)
 
-    handle_error(conn, {:error, :bad_request, errors})
+    handle_error(conn, {:errors, :bad_request, errors})
   end
 end
