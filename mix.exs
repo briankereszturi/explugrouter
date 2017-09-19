@@ -16,7 +16,7 @@ defmodule ExPlugRouter.Mixfile do
 
   defp deps do
     [
-      {:plug, "~> 1.1.4"},
+      {:plug, "~> 1.4.0"},
       {:poison, "~> 2.2"}
     ]
   end
