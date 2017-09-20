@@ -28,7 +28,7 @@ defmodule ExPlugRouter.Utils do
 
   def send_json(conn, status, serializable) do
     conn
-      |> put_resp_header("content-type", "application/json")
+      |> put_resp_header("content-type", "application/json; charset=utf-8")
       |> send_resp(status, Poison.encode!(serializable))
   end
   def send_json(conn, serializable) do
