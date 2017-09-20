@@ -29,7 +29,7 @@ defmodule ExPlugRouter.Utils do
   def send_json(conn, status, serializable) do
     conn
       |> put_resp_header("content-type", "application/json")
-      |> send_resp(status, Poison.encode!(serializable, escape: :unicode))
+      |> send_resp(status, Poison.encode!(serializable))
   end
   def send_json(conn, serializable) do
     send_json(conn, 200, serializable)
